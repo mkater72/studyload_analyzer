@@ -6,7 +6,7 @@ SECRET_KEY = 'django-insecure-change-this-key'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['mkater72.pythonanywhere.com', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -54,3 +54,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+import os
+# Эта папка создастся автоматически при команде collectstatic
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
