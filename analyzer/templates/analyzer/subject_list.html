@@ -1,0 +1,10 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+<h3>Список предметов</h3>
+<ul>
+    {% for subject in subjects %}
+        <li>{{ subject.name }} — {{ subject.weekly_hours }} ч/нед</li>
+    {% endfor %}
+</ul>
+{% endblock %}

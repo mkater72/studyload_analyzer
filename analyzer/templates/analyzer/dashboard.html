@@ -1,0 +1,35 @@
+{% extends 'analyzer/base.html' %}
+
+{% block content %}
+<h3>Добавить оценку</h3>
+<form method="post" class="mb-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary">Сохранить</button>
+</form>
+
+<h3>Аналитика</h3>
+
+{% if stats %}
+<table class="table table-bordered">
+    <tr>
+        <th>Предмет</th>
+        <th>Средний балл</th>
+        <th>Часы в неделю</th>
+    </tr>
+    {% for subject, data in stats.items %}
+    <tr>
+        <td>{{ subject }}</td>
+        <td>{{ data.average_grade }}</td>
+        <td>{{ data.weekly_hours }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h4>График среднего балла</h4>
+<img src="{{ chart_url }}" class="img-fluid">
+
+{% else %}
+<p>Нет данных для аналитики.</p>
+{% endif %}
+{% endblock %}
