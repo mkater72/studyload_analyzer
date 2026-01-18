@@ -56,5 +56,4 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 import os
-# Эта папка создастся автоматически при команде collectstatic
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
