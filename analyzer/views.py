@@ -29,8 +29,7 @@ def dashboard(request):
 
         stats = grouped.to_dict('index')
 
-        # ===== ГЕНЕРАЦИЯ ГРАФИКА =====
-        plt.figure(figsize=(10, 6))  # <-- делаем график выше и шире
+        plt.figure(figsize=(10, 6))
 
         grouped['average_grade'].plot(kind='bar')
 
@@ -38,10 +37,10 @@ def dashboard(request):
         plt.ylabel('Средний балл', fontsize=12)
         plt.xlabel('Предмет', fontsize=12)
 
-        plt.xticks(rotation=45, ha='right')  # <-- наклон подписей
-        plt.ylim(0, 5)  # <-- логичный диапазон оценок
+        plt.xticks(rotation=45, ha='right')
+        plt.ylim(0, 5)
 
-        plt.grid(axis='y', linestyle='--', alpha=0.7)  # аккуратная сетка
+        plt.grid(axis='y', linestyle='--', alpha=0.7)
         plt.tight_layout()
 
 
