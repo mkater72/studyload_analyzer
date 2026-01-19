@@ -1,12 +1,35 @@
 {% extends 'analyzer/base.html' %}
 
 {% block content %}
+
 <h3>Добавить оценку</h3>
 <form method="post" class="mb-4">
     {% csrf_token %}
     {{ form.as_p }}
-    <button class="btn btn-primary">Сохранить</button>
+    <button class="btn btn-success">Добавить</button>
 </form>
+
+<h3>Список оценок</h3>
+<table class="table table-striped">
+    <tr>
+        <th>Предмет</th>
+        <th>Оценка</th>
+        <th>Дата</th>
+        <th></th>
+    </tr>
+    {% for grade in grades %}
+    <tr>
+        <td>{{ grade.subject.name }}</td>
+        <td>{{ grade.value }}</td>
+        <td>{{ grade.date }}</td>
+        <td>
+            <a href="{% url 'delete_grade' grade.id %}" class="btn btn-danger btn-sm">
+                Удалить
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
 
 <h3>Аналитика</h3>
 
@@ -32,4 +55,5 @@
 {% else %}
 <p>Нет данных для аналитики.</p>
 {% endif %}
+
 {% endblock %}
