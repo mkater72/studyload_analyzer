@@ -10,13 +10,11 @@ import os
 def dashboard(request):
     grades = Grade.objects.select_related('subject')
 
-    # ---------- форма добавления оценки ----------
     form = GradeForm(request.POST or None)
     if form.is_valid():
         form.save()
         return redirect('dashboard')
 
-    # ---------- подготовка данных для анализа ----------
     data = [{
         'subject': g.subject.name,
         'grade': g.value,
@@ -35,7 +33,6 @@ def dashboard(request):
 
         stats = grouped.to_dict('index')
 
-        # ---------- построение графика ----------
         plt.figure(figsize=(10, 6))
         grouped['average_grade'].plot(kind='bar')
         plt.title('Средний балл по предметам')
