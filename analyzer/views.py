@@ -34,11 +34,6 @@ def dashboard(request):
         stats = grouped.to_dict('index')
 
         plt.figure(figsize=(10, 6))
-        grouped['average_grade'].plot(kind='bar')
-        plt.title('Средний балл по предметам')
-        plt.ylabel('Средний балл')
-        plt.xlabel('Предмет')
-        plt.ylim(0, 5)
         plt.tight_layout()
 
         charts_dir = os.path.join(settings.MEDIA_ROOT, 'charts')
